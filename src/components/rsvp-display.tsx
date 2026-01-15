@@ -44,7 +44,7 @@ export function RsvpDisplay({ word, title, url, currentIndex, totalWords }: Rsvp
 
         {/* Word display - using grid to anchor pivot at center */}
         <div
-          className="grid font-light text-3xl sm:text-5xl md:text-6xl tracking-wide"
+          className="grid font-light text-2xl sm:text-5xl md:text-6xl tracking-wide"
           style={{ gridTemplateColumns: "1fr auto 1fr" }}
         >
           {/* Before - right-aligned */}
