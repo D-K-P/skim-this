@@ -1,5 +1,7 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
+
 type RsvpDisplayProps = {
   word: string;
   title: string;
@@ -28,20 +30,21 @@ export function RsvpDisplay({ word, title, url, currentIndex, totalWords }: Rsvp
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center truncate px-4 underline decoration-dashed underline-offset-4 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+        className="flex items-center gap-1.5 text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center px-6 sm:px-4 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
       >
+        <ExternalLink className="h-3 w-3 flex-shrink-0" />
         {title}
       </a>
 
       {/* Fixed-position ORP display */}
-      <div className="relative h-24 w-full flex items-center justify-center overflow-hidden">
+      <div className="relative h-16 sm:h-24 w-full flex items-center justify-center overflow-hidden">
         {/* Focal point markers */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 h-2 w-0.5 bg-emerald-500/50" />
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 h-2 w-0.5 bg-emerald-500/50" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 h-1.5 sm:h-2 w-0.5 bg-emerald-500/50" />
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 h-1.5 sm:h-2 w-0.5 bg-emerald-500/50" />
 
         {/* Word display - using grid to anchor pivot at center */}
         <div
-          className="grid font-light text-5xl md:text-6xl tracking-wide"
+          className="grid font-light text-3xl sm:text-5xl md:text-6xl tracking-wide"
           style={{ gridTemplateColumns: "1fr auto 1fr" }}
         >
           {/* Before - right-aligned */}

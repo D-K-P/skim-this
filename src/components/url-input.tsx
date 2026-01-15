@@ -85,7 +85,7 @@ export function UrlInput({ onExtracted, initialUrl = "", autoFetch = false }: Ur
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-4">
+    <form onSubmit={handleSubmit} className="w-full max-w-md sm:max-w-xl space-y-4 px-2 sm:px-0">
       <div className="flex gap-2">
         <Input
           type="text"

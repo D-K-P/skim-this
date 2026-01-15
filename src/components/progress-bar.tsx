@@ -43,7 +43,7 @@ export function ProgressBar({
       <div
         ref={barRef}
         onClick={handleClick}
-        className="h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full cursor-pointer overflow-hidden"
+        className="h-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-full cursor-pointer overflow-hidden"
         role="progressbar"
         aria-valuenow={wordIndex}
         aria-valuemin={0}

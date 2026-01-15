@@ -73,11 +73,11 @@ function HomeContent() {
   }, [isAtEnd, isPlaying]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 gap-6">
+    <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 gap-4 sm:gap-6">
       {!article ? (
         <>
-          <h1 className="text-4xl font-semibold tracking-tight">skim this</h1>
-          <p className="text-muted-foreground pb-2">
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center">skim this</h1>
+          <p className="text-muted-foreground pb-2 text-sm sm:text-base text-center px-4">
             Speed read any article using{" "}
             <a
               href="https://en.wikipedia.org/wiki/Rapid_serial_visual_presentation"
@@ -122,7 +122,8 @@ function HomeContent() {
             totalWords={article.words.length}
           />
 
-          <div className="flex flex-col items-center gap-4 pt-4">
+          {/* Keyboard shortcuts - hidden on mobile */}
+          <div className="hidden sm:flex flex-col items-center gap-4 pt-4">
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
                 <kbd className="px-2 py-1 bg-zinc-200 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 font-mono text-[10px]">
@@ -166,8 +167,8 @@ export default function Home() {
   return (
     <Suspense
       fallback={
-        <main className="min-h-screen flex flex-col items-center justify-center p-8 gap-8">
-          <h1 className="text-4xl font-semibold tracking-tight">skim this</h1>
+        <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 gap-6">
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">skim this</h1>
           <p className="text-muted-foreground">Loading...</p>
         </main>
       }
