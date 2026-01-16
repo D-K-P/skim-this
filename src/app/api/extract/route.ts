@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
+import { get } from "@vercel/edge-config";
 
 type ExtractRequest = {
   url: string;
@@ -31,6 +32,17 @@ function checkRateLimit(ip: string): boolean {
 
 export async function POST(request: Request): Promise<NextResponse<ExtractResponse>> {
   try {
+    // Edge Config kill switch (optional - only if EDGE_CONFIG is set)
+    if (process.env.EDGE_CONFIG) {
+      const extractEnabled = await get<boolean>("extract_enabled");
+      if (extractEnabled === false) {
+        return NextResponse.json(
+          { success: false, error: "Service temporarily unavailable. Please try again later." },
+          { status: 503 }
+        );
+      }
+    }
+
     // Rate limiting
     const forwarded = request.headers.get("x-forwarded-for");
     const ip = forwarded?.split(",")[0]?.trim() || "unknown";

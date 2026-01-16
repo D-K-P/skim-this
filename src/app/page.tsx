@@ -8,6 +8,7 @@ import { PlaybackControls } from "@/components/playback-controls";
 import { ProgressBar } from "@/components/progress-bar";
 import { usePlayback } from "@/hooks/use-playback";
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
+import { useFocus } from "@/contexts/focus-context";
 
 type ArticleData = {
   title: string;
@@ -19,6 +20,12 @@ function HomeContent() {
   const [article, setArticle] = useState<ArticleData | null>(null);
   const [wordIndex, setWordIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const { setIsFocused } = useFocus();
+
+  // Sync focus mode with playback
+  useEffect(() => {
+    setIsFocused(isPlaying);
+  }, [isPlaying, setIsFocused]);
   const [wpm, setWpm] = useState(() => {
     if (typeof window === "undefined") return 300;
     try {
@@ -73,7 +80,7 @@ function HomeContent() {
   }, [isAtEnd, isPlaying]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 gap-4 sm:gap-6">
+    <main className="h-[100dvh] flex flex-col items-center justify-center p-4 sm:p-8 pt-14 gap-4 sm:gap-6 overflow-hidden">
       {!article ? (
         <>
           <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center">skim this</h1>
@@ -167,7 +174,7 @@ export default function Home() {
   return (
     <Suspense
       fallback={
-        <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 gap-6">
+        <main className="h-[100dvh] flex flex-col items-center justify-center p-4 sm:p-8 pt-14 gap-6 overflow-hidden">
           <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">skim this</h1>
           <p className="text-muted-foreground">Loading...</p>
         </main>

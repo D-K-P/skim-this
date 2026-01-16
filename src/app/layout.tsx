@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { FontPicker } from "@/components/font-picker";
-import { Logo } from "@/components/logo";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { FocusProvider } from "@/contexts/focus-context";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -55,14 +55,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <NuqsAdapter>
-          <header className="absolute top-4 left-4 right-4 flex items-center justify-between">
-            <Logo />
-            <div className="flex items-center gap-2">
-              <FontPicker />
-              <ThemeToggle />
-            </div>
-          </header>
-          {children}
+          <FocusProvider>
+            <Header />
+            {children}
+            <Footer />
+          </FocusProvider>
           <Analytics />
         </NuqsAdapter>
       </body>

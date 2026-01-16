@@ -1,6 +1,9 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { Pencil } from "lucide-react";
+import { EditUrlModal } from "./edit-url-modal";
+import { useFocus } from "@/contexts/focus-context";
 
 type RsvpDisplayProps = {
   word: string;
@@ -18,23 +21,49 @@ function getOrpIndex(word: string): number {
   return Math.floor(len * 0.3);
 }
 
+function formatUrl(url: string): string {
+  return url.replace(/^https?:\/\//, "").slice(0, 40) + (url.length > 48 ? "..." : "");
+}
+
 export function RsvpDisplay({ word, title, url, currentIndex, totalWords }: RsvpDisplayProps) {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const { isFocused } = useFocus();
   const orpIndex = getOrpIndex(word);
   const before = word.slice(0, orpIndex);
   const pivot = word[orpIndex] || "";
   const after = word.slice(orpIndex + 1);
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full">
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1.5 text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center px-6 sm:px-4 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-      >
-        <ExternalLink className="h-3 w-3 flex-shrink-0" />
+    <div className="flex flex-col items-center gap-4 w-full">
+      {/* URL row */}
+      <div className={`flex items-center gap-1.5 text-xs text-muted-foreground transition-opacity duration-[1500ms] ${isFocused ? "opacity-25" : "opacity-100"}`}>
+        <button
+          onClick={() => setIsEditModalOpen(true)}
+          className="p-1 hover:text-foreground transition-colors"
+          aria-label="Change article"
+        >
+          <Pencil className="h-3 w-3" />
+        </button>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="max-w-[200px] sm:max-w-xs truncate underline decoration-dotted decoration-muted-foreground/50 underline-offset-4 hover:text-foreground transition-colors"
+        >
+          {formatUrl(url)}
+        </a>
+      </div>
+
+      {/* Title */}
+      <p className={`text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center px-6 sm:px-4 transition-opacity duration-[1500ms] ${isFocused ? "opacity-25" : "opacity-100"}`}>
         {title}
-      </a>
+      </p>
+
+      <EditUrlModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        currentUrl={url}
+      />
 
       {/* Fixed-position ORP display */}
       <div className="relative h-16 sm:h-24 w-full flex items-center justify-center overflow-hidden">
