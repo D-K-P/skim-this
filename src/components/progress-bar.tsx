@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useFocus } from "@/contexts/focus-context";
 
 type ProgressBarProps = {
   wordIndex: number;
@@ -22,6 +23,7 @@ export function ProgressBar({
   onScrub,
 }: ProgressBarProps) {
   const barRef = useRef<HTMLDivElement>(null);
+  const { isFocused } = useFocus();
 
   const progress = totalWords > 0 ? (wordIndex / (totalWords - 1)) * 100 : 0;
   const wordsRemaining = totalWords - wordIndex - 1;
@@ -41,7 +43,7 @@ export function ProgressBar({
   return (
     <div className="w-full max-w-xs space-y-2">
       <div className="flex items-center gap-3 text-xs text-muted-foreground tabular-nums">
-        <span>{wordIndex + 1}</span>
+        <span className={`transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>{wordIndex + 1}</span>
         <div
           ref={barRef}
           onClick={handleClick}
@@ -56,10 +58,10 @@ export function ProgressBar({
             style={{ width: `${progress}%` }}
           />
         </div>
-        <span>{totalWords}</span>
+        <span className={`transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>{totalWords}</span>
       </div>
 
-      <p className="text-xs text-muted-foreground text-center tabular-nums">
+      <p className={`text-xs text-muted-foreground text-center tabular-nums transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>
         {formatTime(secondsRemaining)} remaining
       </p>
     </div>
