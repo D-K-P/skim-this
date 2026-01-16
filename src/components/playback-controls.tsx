@@ -10,7 +10,6 @@ import {
   Pause,
   RotateCcw,
 } from "lucide-react";
-import { useFocus } from "@/contexts/focus-context";
 
 type PlaybackControlsProps = {
   isPlaying: boolean;
@@ -31,7 +30,6 @@ export function PlaybackControls({
   setWordIndex,
   totalWords,
 }: PlaybackControlsProps) {
-  const { isFocused } = useFocus();
   const isAtEnd = wordIndex >= totalWords - 1;
   const isAtStart = wordIndex === 0;
 
@@ -99,11 +97,7 @@ export function PlaybackControls({
       </div>
 
       {/* WPM controls */}
-      <div
-        className={`flex items-center gap-2 transition-opacity duration-1000 ${
-          isFocused ? "opacity-25" : "opacity-100"
-        }`}
-      >
+      <div className="flex items-center gap-2">
         <Button
           variant="ghost"
           size="icon"

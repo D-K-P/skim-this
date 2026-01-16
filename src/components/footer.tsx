@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer
       className={`absolute bottom-3 left-0 right-0 text-center text-[10px] text-muted-foreground transition-opacity duration-1000 ${
-        isFocused ? "opacity-25 pointer-events-none" : "opacity-100"
+        isFocused ? "opacity-0 pointer-events-none" : "opacity-50"
       }`}
     >
       For personal use only. Vibed by{" "}
@@ -28,7 +28,8 @@ export function Footer() {
         className="underline decoration-dotted decoration-muted-foreground/50 underline-offset-4 hover:text-foreground transition-colors"
       >
         Claude
-      </a>.
+      </a>
+      .
     </footer>
   );
 }

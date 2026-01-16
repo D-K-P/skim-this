@@ -98,7 +98,7 @@ function HomeContent() {
             skim this
           </h1>
           <p className="text-muted-foreground pb-2 text-sm sm:text-base text-center px-4">
-            Speed read any article using{" "}
+            Speed read articles using{" "}
             <a
               href="https://en.wikipedia.org/wiki/Rapid_serial_visual_presentation"
               target="_blank"
