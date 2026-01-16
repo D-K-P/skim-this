@@ -11,7 +11,11 @@ type EditUrlModalProps = {
   currentUrl: string;
 };
 
-export function EditUrlModal({ isOpen, onClose, currentUrl }: EditUrlModalProps) {
+export function EditUrlModal({
+  isOpen,
+  onClose,
+  currentUrl,
+}: EditUrlModalProps) {
   const [url, setUrl] = useState(currentUrl);
 
   if (!isOpen) return null;
@@ -26,10 +30,7 @@ export function EditUrlModal({ isOpen, onClose, currentUrl }: EditUrlModalProps)
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/50"
-        onClick={onClose}
-      />
+      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
 
       {/* Modal */}
       <div className="relative bg-zinc-50 dark:bg-zinc-900 rounded-lg p-6 w-full max-w-md mx-4 shadow-xl">
@@ -52,10 +53,15 @@ export function EditUrlModal({ isOpen, onClose, currentUrl }: EditUrlModalProps)
             autoFocus
           />
           <div className="flex justify-end gap-2">
-            <Button type="button" variant="ghost" className="h-10" onClick={onClose}>
+            <Button
+              type="button"
+              variant="ghost"
+              size="lg"
+              onClick={onClose}
+            >
               Cancel
             </Button>
-            <Button type="submit" className="h-10">
+            <Button type="submit" size="lg">
               Load
             </Button>
           </div>

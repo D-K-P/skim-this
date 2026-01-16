@@ -95,7 +95,7 @@ export function UrlInput({ onExtracted, initialUrl = "", autoFetch = false }: Ur
           className="flex-1"
           disabled={isLoading}
         />
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" size="lg" disabled={isLoading}>
           {isLoading ? "Loading..." : "Load"}
         </Button>
       </div>
