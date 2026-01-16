@@ -11,19 +11,30 @@ Paste a URL, read 2-3x faster. Words are displayed one at a time at a fixed foca
 - [**Next.js**](https://nextjs.org/) – React framework with App Router
 - [**Mozilla Readability**](https://github.com/mozilla/readability) – article extraction (same engine as Firefox Reader View)
 - [**nuqs**](https://nuqs.47ng.com/) – URL state management for shareable links
+- [**canvas-confetti**](https://github.com/catdad/canvas-confetti) – celebration on completion
 - [**Tailwind CSS**](https://tailwindcss.com/) – styling
 - [**shadcn/ui**](https://ui.shadcn.com/) – UI components
 
 ## Setup & running locally
 
 ```bash
-git clone https://github.com/your-username/skim-this.git
+git clone https://github.com/D-K-P/skim-this.git
 cd skim-this
 pnpm install
 pnpm dev
 ```
 
 No environment variables required.
+
+## Features
+
+- **Shareable links** – URL state preserved, share any article with `?url=`
+- **Focus mode** – UI fades during playback for distraction-free reading
+- **Keyboard shortcuts** – space (play/pause), arrows (skip/speed), R (restart)
+- **Progress scrubbing** – click anywhere on progress bar to jump
+- **Confetti** – celebrate when you finish an article
+- **Dark mode** – automatic theme detection with manual toggle
+- **Mobile responsive** – works on all screen sizes
 
 ## How it works
 
@@ -49,6 +60,8 @@ No environment variables required.
 - **RSVP display with ORP** – [`src/components/rsvp-display.tsx`](src/components/rsvp-display.tsx)
 - **playback timing & punctuation pausing** – [`src/hooks/use-playback.ts`](src/hooks/use-playback.ts)
 - **keyboard shortcuts** – [`src/hooks/use-keyboard-shortcuts.ts`](src/hooks/use-keyboard-shortcuts.ts)
+- **focus mode context** – [`src/contexts/focus-context.tsx`](src/contexts/focus-context.tsx)
+- **playback controls & restart** – [`src/components/playback-controls.tsx`](src/components/playback-controls.tsx)
 
 ## Learn more
 
