@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${plusJakarta.variable} ${lora.variable} ${jetbrainsMono.variable}, `}
+      className={`dark ${plusJakarta.variable} ${lora.variable} ${jetbrainsMono.variable}`}
     >
       <body
         className="bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-100 antialiased transition-colors font-sans mx-auto"
