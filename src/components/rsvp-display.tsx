@@ -20,7 +20,10 @@ function getOrpIndex(word: string): number {
 }
 
 function formatUrl(url: string): string {
-  return url.replace(/^https?:\/\//, "").slice(0, 40) + (url.length > 48 ? "..." : "");
+  return (
+    url.replace(/^https?:\/\//, "").slice(0, 40) +
+    (url.length > 48 ? "..." : "")
+  );
 }
 
 export function RsvpDisplay({ word, title, url }: RsvpDisplayProps) {
@@ -34,7 +37,11 @@ export function RsvpDisplay({ word, title, url }: RsvpDisplayProps) {
   return (
     <div className="flex flex-col items-center gap-4 w-full">
       {/* URL row */}
-      <div className={`flex items-center gap-1.5 text-xs text-muted-foreground transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>
+      <div
+        className={`flex items-center gap-1 pb-1 text-sm text-muted-foreground transition-opacity duration-1000 ${
+          isFocused ? "opacity-25" : "opacity-100"
+        }`}
+      >
         <button
           onClick={() => setIsEditModalOpen(true)}
           className="p-1 hover:text-foreground transition-colors"
@@ -53,7 +60,11 @@ export function RsvpDisplay({ word, title, url }: RsvpDisplayProps) {
       </div>
 
       {/* Title */}
-      <p className={`text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center px-6 sm:px-4 transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>
+      <p
+        className={`text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center px-6 sm:px-4 transition-opacity duration-1000 ${
+          isFocused ? "opacity-25" : "opacity-100"
+        }`}
+      >
         {title}
       </p>
 
@@ -75,16 +86,21 @@ export function RsvpDisplay({ word, title, url }: RsvpDisplayProps) {
           style={{ gridTemplateColumns: "1fr auto 1fr" }}
         >
           {/* Before - right-aligned */}
-          <span className="text-zinc-900 dark:text-zinc-300 text-right">{before}</span>
+          <span className="text-zinc-900 dark:text-zinc-300 text-right">
+            {before}
+          </span>
 
           {/* Pivot - centered */}
-          <span className="text-emerald-600 dark:text-emerald-400 font-medium">{pivot}</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+            {pivot}
+          </span>
 
           {/* After - left-aligned */}
-          <span className="text-zinc-900 dark:text-zinc-300 text-left">{after}</span>
+          <span className="text-zinc-900 dark:text-zinc-300 text-left">
+            {after}
+          </span>
         </div>
       </div>
-
     </div>
   );
 }

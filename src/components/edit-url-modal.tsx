@@ -52,10 +52,10 @@ export function EditUrlModal({ isOpen, onClose, currentUrl }: EditUrlModalProps)
             autoFocus
           />
           <div className="flex justify-end gap-2">
-            <Button type="button" variant="ghost" onClick={onClose}>
+            <Button type="button" variant="ghost" className="h-10" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="h-10">
               Load
             </Button>
           </div>

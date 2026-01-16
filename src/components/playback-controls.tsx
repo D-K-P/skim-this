@@ -8,6 +8,7 @@ import {
   Plus,
   Play,
   Pause,
+  RotateCcw,
 } from "lucide-react";
 import { useFocus } from "@/contexts/focus-context";
 
@@ -67,12 +68,20 @@ export function PlaybackControls({
         <Button
           variant="outline"
           size="icon"
-          onClick={() => setIsPlaying(!isPlaying)}
-          disabled={isAtEnd && !isPlaying}
-          aria-label={isPlaying ? "Pause" : "Play"}
+          onClick={() => {
+            if (isAtEnd) {
+              setWordIndex(0);
+              setIsPlaying(true);
+            } else {
+              setIsPlaying(!isPlaying);
+            }
+          }}
+          aria-label={isPlaying ? "Pause" : isAtEnd ? "Restart" : "Play"}
         >
           {isPlaying ? (
             <Pause className="h-5 w-5" />
+          ) : isAtEnd ? (
+            <RotateCcw className="h-5 w-5" />
           ) : (
             <Play className="h-5 w-5" />
           )}

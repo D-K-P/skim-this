@@ -11,15 +11,24 @@ export function Footer() {
         isFocused ? "opacity-25 pointer-events-none" : "opacity-100"
       }`}
     >
-      For personal use only. Made by{" "}
+      For personal use only. Vibed by{" "}
       <a
         href="https://github.com/D-K-P"
         target="_blank"
         rel="noopener noreferrer"
-        className="underline underline-offset-2 hover:text-foreground transition-colors"
+        className="underline decoration-dotted decoration-muted-foreground/50 underline-offset-4 hover:text-foreground transition-colors"
       >
         d-k-p
-      </a>
+      </a>{" "}
+      with{" "}
+      <a
+        href="https://claude.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline decoration-dotted decoration-muted-foreground/50 underline-offset-4 hover:text-foreground transition-colors"
+      >
+        Claude
+      </a>.
     </footer>
   );
 }

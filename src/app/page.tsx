@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
+import confetti from "canvas-confetti";
 import { useQueryState } from "nuqs";
 import { UrlInput } from "@/components/url-input";
 import { RsvpDisplay } from "@/components/rsvp-display";
@@ -21,6 +22,7 @@ function HomeContent() {
   const [wordIndex, setWordIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const { setIsFocused } = useFocus();
+  const hasConfettied = useRef(false);
 
   // Sync focus mode with playback
   useEffect(() => {
@@ -69,13 +71,22 @@ function HomeContent() {
     setWordIndex(0);
     setIsPlaying(false);
     setUrlParam(url);
+    hasConfettied.current = false;
   };
 
-  // Stop at end
+  // Stop at end + confetti
   const isAtEnd = article ? wordIndex >= article.words.length - 1 : false;
   useEffect(() => {
     if (isAtEnd && isPlaying) {
       setIsPlaying(false);
+      if (!hasConfettied.current) {
+        hasConfettied.current = true;
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      }
     }
   }, [isAtEnd, isPlaying]);
 

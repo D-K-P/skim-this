@@ -47,16 +47,18 @@ export function ProgressBar({
         <div
           ref={barRef}
           onClick={handleClick}
-          className="flex-1 h-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-full cursor-pointer overflow-hidden"
+          className="flex-1 py-2 cursor-pointer group"
           role="progressbar"
           aria-valuenow={wordIndex}
           aria-valuemin={0}
           aria-valuemax={totalWords - 1}
         >
-          <div
-            className="h-full bg-emerald-500 transition-all duration-100"
-            style={{ width: `${progress}%` }}
-          />
+          <div className="h-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden group-hover:h-1 transition-all">
+            <div
+              className="h-full bg-emerald-500 transition-all duration-100"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
         </div>
         <span className={`transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>{totalWords}</span>
       </div>
