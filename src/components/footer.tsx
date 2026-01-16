@@ -7,7 +7,7 @@ export function Footer() {
 
   return (
     <footer
-      className={`absolute bottom-3 left-0 right-0 text-center text-[10px] text-muted-foreground transition-opacity duration-[1500ms] ${
+      className={`absolute bottom-3 left-0 right-0 text-center text-[10px] text-muted-foreground transition-opacity duration-1000 ${
         isFocused ? "opacity-25 pointer-events-none" : "opacity-100"
       }`}
     >

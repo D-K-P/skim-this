@@ -108,8 +108,6 @@ function HomeContent() {
             word={article.words[wordIndex] || ""}
             title={article.title}
             url={urlParam || ""}
-            currentIndex={wordIndex}
-            totalWords={article.words.length}
           />
 
           <ProgressBar

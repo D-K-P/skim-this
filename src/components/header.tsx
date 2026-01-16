@@ -11,7 +11,7 @@ export function Header() {
 
   return (
     <header
-      className={`absolute top-4 left-4 right-4 flex items-center justify-between transition-opacity duration-[1500ms] ${
+      className={`absolute top-4 left-4 right-4 flex items-center justify-between transition-opacity duration-1000 ${
         isFocused ? "opacity-25 pointer-events-none" : "opacity-100"
       }`}
     >

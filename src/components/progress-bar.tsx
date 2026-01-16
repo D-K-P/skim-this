@@ -39,20 +39,24 @@ export function ProgressBar({
   };
 
   return (
-    <div className="w-full max-w-md space-y-2">
-      <div
-        ref={barRef}
-        onClick={handleClick}
-        className="h-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-full cursor-pointer overflow-hidden"
-        role="progressbar"
-        aria-valuenow={wordIndex}
-        aria-valuemin={0}
-        aria-valuemax={totalWords - 1}
-      >
+    <div className="w-full max-w-xs space-y-2">
+      <div className="flex items-center gap-3 text-xs text-muted-foreground tabular-nums">
+        <span>{wordIndex + 1}</span>
         <div
-          className="h-full bg-emerald-500 transition-all duration-100"
-          style={{ width: `${progress}%` }}
-        />
+          ref={barRef}
+          onClick={handleClick}
+          className="flex-1 h-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-full cursor-pointer overflow-hidden"
+          role="progressbar"
+          aria-valuenow={wordIndex}
+          aria-valuemin={0}
+          aria-valuemax={totalWords - 1}
+        >
+          <div
+            className="h-full bg-emerald-500 transition-all duration-100"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <span>{totalWords}</span>
       </div>
 
       <p className="text-xs text-muted-foreground text-center tabular-nums">

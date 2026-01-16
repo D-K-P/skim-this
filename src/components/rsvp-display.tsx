@@ -9,8 +9,6 @@ type RsvpDisplayProps = {
   word: string;
   title: string;
   url: string;
-  currentIndex: number;
-  totalWords: number;
 };
 
 function getOrpIndex(word: string): number {
@@ -25,7 +23,7 @@ function formatUrl(url: string): string {
   return url.replace(/^https?:\/\//, "").slice(0, 40) + (url.length > 48 ? "..." : "");
 }
 
-export function RsvpDisplay({ word, title, url, currentIndex, totalWords }: RsvpDisplayProps) {
+export function RsvpDisplay({ word, title, url }: RsvpDisplayProps) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const { isFocused } = useFocus();
   const orpIndex = getOrpIndex(word);
@@ -36,7 +34,7 @@ export function RsvpDisplay({ word, title, url, currentIndex, totalWords }: Rsvp
   return (
     <div className="flex flex-col items-center gap-4 w-full">
       {/* URL row */}
-      <div className={`flex items-center gap-1.5 text-xs text-muted-foreground transition-opacity duration-[1500ms] ${isFocused ? "opacity-25" : "opacity-100"}`}>
+      <div className={`flex items-center gap-1.5 text-xs text-muted-foreground transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>
         <button
           onClick={() => setIsEditModalOpen(true)}
           className="p-1 hover:text-foreground transition-colors"
@@ -55,7 +53,7 @@ export function RsvpDisplay({ word, title, url, currentIndex, totalWords }: Rsvp
       </div>
 
       {/* Title */}
-      <p className={`text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center px-6 sm:px-4 transition-opacity duration-[1500ms] ${isFocused ? "opacity-25" : "opacity-100"}`}>
+      <p className={`text-zinc-900 dark:text-zinc-300 text-xs uppercase tracking-widest max-w-md text-center px-6 sm:px-4 transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>
         {title}
       </p>
 
@@ -87,16 +85,6 @@ export function RsvpDisplay({ word, title, url, currentIndex, totalWords }: Rsvp
         </div>
       </div>
 
-      <div className="flex items-center gap-3 text-xs text-zinc-900 dark:text-zinc-300">
-        <span className="tabular-nums">{currentIndex + 1}</span>
-        <div className="w-24 h-px bg-zinc-300 dark:bg-zinc-800">
-          <div
-            className="h-full bg-emerald-500/50 transition-all duration-75"
-            style={{ width: `${((currentIndex + 1) / totalWords) * 100}%` }}
-          />
-        </div>
-        <span className="tabular-nums">{totalWords}</span>
-      </div>
     </div>
   );
 }
