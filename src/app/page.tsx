@@ -94,14 +94,16 @@ function HomeContent() {
     <main className="h-[100dvh] flex flex-col items-center justify-center p-4 sm:p-8 pt-14 gap-4 sm:gap-6 overflow-hidden">
       {!article ? (
         <>
-          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center">skim this</h1>
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center">
+            skim this
+          </h1>
           <p className="text-muted-foreground pb-2 text-sm sm:text-base text-center px-4">
             Speed read any article using{" "}
             <a
               href="https://en.wikipedia.org/wiki/Rapid_serial_visual_presentation"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-dashed underline-offset-4 hover:text-foreground transition-colors"
+              className="underline decoration-dashed decoration-muted-foreground/30 underline-offset-4 hover:text-foreground transition-colors"
             >
               rapid serial visual presentation
             </a>
@@ -139,7 +141,11 @@ function HomeContent() {
           />
 
           {/* Keyboard shortcuts - hidden on mobile */}
-          <div className={`hidden sm:flex flex-col items-center gap-4 pt-4 transition-opacity duration-1000 ${isPlaying ? "opacity-25" : "opacity-100"}`}>
+          <div
+            className={`hidden sm:flex flex-col items-center gap-4 pt-4 transition-opacity duration-1000 ${
+              isPlaying ? "opacity-25" : "opacity-100"
+            }`}
+          >
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
                 <kbd className="px-2 py-1 bg-zinc-200 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 font-mono text-[10px]">
@@ -184,7 +190,9 @@ export default function Home() {
     <Suspense
       fallback={
         <main className="h-[100dvh] flex flex-col items-center justify-center p-4 sm:p-8 pt-14 gap-6 overflow-hidden">
-          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">skim this</h1>
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+            skim this
+          </h1>
           <p className="text-muted-foreground">Loading...</p>
         </main>
       }

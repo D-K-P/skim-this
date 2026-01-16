@@ -13,25 +13,8 @@ function ShareButtonInner() {
   if (!urlParam) return null;
 
   const handleShare = async () => {
-    const shareUrl = window.location.href;
-    const shareTitle = "Skim this article";
-
-    // Try native share on mobile
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: shareTitle,
-          url: shareUrl,
-        });
-        return;
-      } catch {
-        // User cancelled or share failed, fall through to clipboard
-      }
-    }
-
-    // Fallback to clipboard
     try {
-      await navigator.clipboard.writeText(shareUrl);
+      await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -49,12 +32,12 @@ function ShareButtonInner() {
       {copied ? (
         <>
           <Check className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">Copied</span>
+          <span className="hidden sm:inline">Copied!</span>
         </>
       ) : (
         <>
           <Share2 className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">Share this article</span>
+          <span className="hidden sm:inline">Share</span>
         </>
       )}
     </Button>
