@@ -99,7 +99,11 @@ export function PlaybackControls({
       </div>
 
       {/* WPM controls */}
-      <div className={`flex items-center gap-2 transition-opacity duration-1000 ${isFocused ? "opacity-25" : "opacity-100"}`}>
+      <div
+        className={`flex items-center gap-2 transition-opacity duration-1000 ${
+          isFocused ? "opacity-25" : "opacity-100"
+        }`}
+      >
         <Button
           variant="ghost"
           size="icon"
@@ -110,8 +114,14 @@ export function PlaybackControls({
           <Minus className="h-4 w-4" />
         </Button>
 
-        <span className="text-sm text-muted-foreground tabular-nums w-20 text-center">
+        <span className="text-sm text-muted-foreground tabular-nums text-center">
           {wpm} WPM
+          {wpm >= 1000 && (
+            <span className="pl-2 text-sm text-muted-foreground/75">
+              {"  "}
+              (Johnny 5 mode)
+            </span>
+          )}
         </span>
 
         <Button
